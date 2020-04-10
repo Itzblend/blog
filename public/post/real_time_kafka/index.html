@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en"><meta charset="utf-8"><meta name="generator" content="Hugo 0.68.3" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="supported-color-schemes" content="light dark"><title>Scalable and fast real-time data with Apache Kafka&nbsp;&ndash;&nbsp;Data Engineer Lauri Huhta</title><link rel="stylesheet" href="/css/core.min.96c00237413bedc5f3b4492ac3a19d4c4ca67cd2d17cb537ae443bdf32e8ac1ec15c2d5bbc83854baa211b076bae2cd1.css" integrity="sha384-lsACN0E77cXztEkqw6GdTEymfNLRfLU3rkQ73zLorB7BXC1bvIOFS6ohGwdrrizR"><body>
+    <div class="base-body"><section id="header" class="site header">
+    <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><span class="site name">Data Engineer Lauri Huhta</span></a></span>
+        <span class="header right-side"><div class="nav wrap"><nav class="nav"><a class="nav item" href="/tags/">Tags</a><a class="nav item" href="/about">About</a></nav></div></span></div><div class="site slogan"><span class="title">Just an honest man building some data pipelines</span></div></section><div id="content"><div class="article-container"><section class="article header">
+    <h1 class="article title">Scalable and fast real-time data with Apache Kafka</h1><p class="article date">Friday, April 5, 2019</p></section><article class="article markdown-body"><p>When there is a need to analyze teams, the decision makers usually want to see some graphs. Visualizing data is absolutely crucial when trying to understand big sets of data. The more data the graphs are visualizing and the more up-to-date the data is, the better.<br>
+Nonetheless from first collecting the data, all the way of getting it into the visualization stage, there is a long route to travel and there can be some challenges on the way.</p>
+<p>In the following illustrations, I have built dashboads with Kibana, a data visualization tool that is part of the Elastic product family known as ELK-stack. In this post I want to talk about how Kafka, a stream processing software made by LinkedIn could help in this process of providing real-time visualizations of any data source. Kafka is a stream processor that is built on the basis of traditional messaging pub-sub system.
+Kafka itself is the one that moves the data around and processes it along the way but the systems pushing the data in are called publishers and the ones subscribing to the information streams of kafka are subscribers.</p>
+<p><a href="https://ibb.co/JH7swtv"><img src="https://i.ibb.co/5L8Rg4r/Screenshot-2020-04-08-at-18-29-33.png" alt="Screenshot-2020-04-08-at-18-29-33" border="0"></a></p>
+<p>What really sets ELK-stack and especially Kibana apart as an visualization tool is that it handles the data as logs. Kafka doesnt give the data to kibana as the structured data tables as many other data visualization tools do.
+Kafka sends the state of the producer (in this case postgres database) periodically as log messages which is the trick behind making ELK-stack so scalable while keeping the vast amounts of data flowing in real-time.</p>
+<p><a href="https://ibb.co/3TbwJ8s"><img src="https://i.ibb.co/JcTNhbd/Screenshot-2020-04-09-at-18-20-36.png" alt="Screenshot-2020-04-09-at-18-20-36" border="0"></a></p>
+<p>Instead of a traditional model where you download the data and start visualizing it, the user subscribes into the kafka &ldquo;topic&rdquo; which holds the data that the user is interested of and pulls the logs of the data throughout the history regarding on that data and subscribes to receive all the changes and addition that happen on that topic. This way the subscribers can pull the data into search engines, visualization tool or where ever they want to use the data in.</p>
+<p><a href="https://ibb.co/NT7fxKy"><img src="https://i.ibb.co/LNvBS1Z/1024px-Apache-kafka-icon-svg.png" alt="1024px-Apache-kafka-icon-svg" border="0" style="max-width:300px"></a></p>
+<p>The flexibility of Kafka really comes into the light when we look at whats happening inside the kafka streams.<br>
+In kafka stream you can process the data in any way you desire. Kafka uses very SQL-like query language that every data engineer should be able to adapt quickly. The most common use cases is to process transactional data into a weekly or monthly averages before pushing it into the visualization tool.</p>
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="n">STREAM</span> <span class="k">AS</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">example_topic</span> <span class="n">WINDOW</span> <span class="n">TUMBLING</span> <span class="p">(</span><span class="k">SIZE</span> <span class="mi">30</span> <span class="n">DAYS</span><span class="p">);</span>
+</code></pre></div><p>With this technology, as illustrated in the above images, we are able to visualize data from Jira issues (or any data source) and include the data into our visualization and reports without delay.<br>
+To conclude:<br>
+Stop downloading the data. Subscribe to data streams instead.</p>
+
+</article><section class="article labels"><a class="tag" href=/tags/postgresql/>Postgresql</a><a class="tag" href=/tags/databases/>Databases</a><a class="tag" href=/tags/kafka/>Kafka</a><a class="tag" href=/tags/real-time-analytics/>Real-time analytics</a></section></div></div><section id="footer" class="footer"><div class="footer-wrap">
+    <p class="copyright">©2019 Notepadium.</p>
+    <p class="powerby"><span>Powered by </span><a href="https://gohugo.io" 
+        target="_blank">Hugo</a><span> and the </span><a href="https://themes.gohugo.io/hugo-notepadium/" 
+        target="_blank">Notepadium</a></p>
+</div></section></div>
+</body>
+
+</html>

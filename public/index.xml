@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Data Engineer Lauri Huhta</title>
+    <link>/</link>
+    <description>Recent content on Data Engineer Lauri Huhta</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>©2019 Notepadium.</copyright>
+    <lastBuildDate>Fri, 05 Apr 2019 00:00:00 +0000</lastBuildDate>
+    
+        <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Posts</title>
+      <link>/post/</link>
+      <pubDate>Fri, 05 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/about/</guid>
+      <description>Hi!
+My name is Lauri. I&amp;rsquo;m a passionate data engineer specializing in bringing business insight from data
+
+You can contact me from my email: huhta.lauri@gmail.com</description>
+      
+    </item>
+    
+  </channel>
+</rss>
